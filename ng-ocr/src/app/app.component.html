@@ -1,0 +1,30 @@
+<!-- <div class="container">
+<app-header></app-header>
+<div>  
+<router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>
+</div> -->
+<ng-template #content>
+<app-layout>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav role="navigation">
+      <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+      <!--in here all the content must reside. We will add a navigation header as well-->
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <!-- <app-home></app-home> -->
+</app-layout>
+</ng-template>
+
+<ng-template #loading>
+  <div>LOADING...</div>
+</ng-template>
+
+<ng container *ngTemplateOutlet="(isReady$ | async) ? content : loading"></ng>

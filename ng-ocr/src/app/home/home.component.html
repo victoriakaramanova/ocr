@@ -1,0 +1,33 @@
+<section fxLayout="column" fxFlexAlign="stretch">
+  <div class="message" fxFlexAlign="center">
+    <p style="text-align: center;">HERE YOU CAN RECOGNIZE A TEXT OUT OF AN IMAGE FROM ANY LANGUAGE</p>
+  </div>
+  <!-- <p>In this application we are going to work with:</p> -->
+
+  <h1>{{homeText}}</h1>
+  <div class="wrapper" fxLayout.xs="column" fxLayout.gt-xs="row"
+        fxFlex.xs="grow" fxFlex.gt-xs="grow" fxLayoutAlign="center center">
+    <img [src]="homePicUrl" style="width: 48vh;margin: 0 auto;" />
+    <mat-icon>east</mat-icon>
+    <mat-card>
+      <mat-card-content>
+        Polakom poprawę - "Wiedy zdamy egzamin najudniejszy. To nie sztuka zatrzymać Polskę. To sztuka ruszyć ją z po-wrotem i nie popomąć jej znowi w złą stronę. "Więc, gdy nadejdzie to,co nieuchronne, po pier-wsze nie dajmy się oszukać. Nie ma Jepszych
+      </mat-card-content>
+    </mat-card>
+  </div>
+<!-- <img src=`{{image}}`> -->
+<mat-tab-group (selectedTabChange)="executeSelectedChange($event)">
+  <mat-tab label="Choose Your image, a graphic file: jpeg, png, jpg"> 
+    <p>Load it in the application</p> 
+  </mat-tab>
+  <mat-tab label="Select the recognition language">
+     <p>and few seconds later You'll see the text content of Your file</p>
+    </mat-tab>
+  <mat-tab label="You may correct">
+     <p> or check Your recognition collection or delete any items in it</p>
+    </mat-tab>
+</mat-tab-group>
+</section>
+
+
+

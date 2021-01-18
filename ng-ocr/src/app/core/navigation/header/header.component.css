@@ -1,0 +1,41 @@
+div:last-of-type{
+  display: flex;
+  align-items: flex-end;
+}
+
+ul{
+  display: flex;
+  align-items: flex-end;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  margin: 0.3em;
+}
+
+a:hover, a:active{
+  color: lightgray;
+}
+
+.navigation-items{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* mat-toolbar:last-child{
+  align-self: flex-end;
+} */
+
+mat-toolbar{
+  border-radius: 3px;
+  justify-content: space-between;
+}
+
+@media(max-width: 959px){
+  mat-toolbar{
+      border-radius: 0px;
+  }
+}
+

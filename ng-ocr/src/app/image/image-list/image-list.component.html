@@ -1,0 +1,47 @@
+<div fxLayout fxLayoutAlign="center center">
+  <mat-form-field fxFlex="40%">
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+<table mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="url">
+    <th mat-header-cell *matHeaderCellDef> Image </th>
+    <td mat-cell *matCellDef="let element"> <img style="max-width: 40vh;width: auto" src="{{element.url}}" alt=""></td>
+  </ng-container>
+  <ng-container matColumnDef="originalname">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> File Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.originalname }} </td>
+  </ng-container>
+  <ng-container matColumnDef="language">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Language </th>
+    <td mat-cell *matCellDef="let element"> {{element.language}} </td>
+  </ng-container>
+  <!-- <ng-container matColumnDef="languageText">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> LanguageText </th>
+    <td mat-cell *matCellDef="let element"> {{element.languageText}} </td>
+  </ng-container> -->
+  <ng-container matColumnDef="updatedAt">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Updated </th>
+    <!-- <th mat-header-cell *matHeaderCellDef> Last Updated </th> -->
+    <td mat-cell *matCellDef="let element"> {{element.updatedAt | date}} </td>
+  </ng-container>
+  <ng-container matColumnDef="details">
+    <th mat-header-cell *matHeaderCellDef> Details </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="primary" (click)="redirectToDetails(element._id)">
+          <mat-icon class="mat-18">reorder</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="warn" (click)="redirectToDelete(element._id)">
+            <mat-icon class="mat-18">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

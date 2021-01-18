@@ -1,0 +1,38 @@
+section div p:nth-child(1){
+  font-size: 50px;
+  text-align: center;
+  color: #f44336;
+}
+section div p:nth-child(2){
+  font-size: 20px;
+  text-align: center;
+  color: #3f51b5;
+}
+mat-checkbox {
+  color: #3f51b5;
+}
+section div h1{
+  text-align: center;
+  color: #3f51b5;
+  position: relative;
+  top: -85px;
+}
+/* mat-spinner {
+  float: left !important;
+  width: 24px !important;
+  height: 24px !important;
+  margin: 5px 10px 0px 0px !important;
+} */
+
+circle {
+  stroke-dasharray: 50px;
+}
+/* svg {
+  width: 25px;
+  height: 25px;
+} */
+
+.spinner-container {
+  flex-direction: row;
+  margin-top: 20px;
+}

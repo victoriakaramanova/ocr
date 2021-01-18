@@ -1,0 +1,31 @@
+/* mat-card {
+  flex: 1 1 1500px;
+  box-sizing: border-box;
+  max-width: 1500px;
+  min-width: 500px;
+} */
+section{
+  display: block;
+}
+
+mat-card-title, mat-card-actions {
+  text-align: center;
+}
+mat-card-content{
+  text-align: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.advanced-color{
+  color: #3f51b5;
+}
+.beginner-color{
+  color: #f44336;
+}
+
+img {
+  max-width: 900px;
+  height: auto;
+  /* max-height: 50vh; */
+  width: fit-content;
+}

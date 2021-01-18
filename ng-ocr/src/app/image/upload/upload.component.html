@@ -1,0 +1,67 @@
+<div class="container">
+  <div *ngIf="finished">
+    <img [src]="response.url" >
+  </div>
+  
+  <div style="text-align:center; margin: 0 auto;">
+    <mat-card style="margin-top:10px; width: 100%;">  
+    <mat-card-content>  
+      <ul>  
+        <li *ngFor="let file of files">  
+          <mat-progress-bar *ngIf="!finished" [value]="file.progress">
+          </mat-progress-bar>  
+          <span *ngIf="!finished" id="file-label">  
+            {{file.progress}} %
+          </span>  
+        </li>  
+      </ul>  
+    </mat-card-content>  
+    <mat-card-actions>  
+      
+      <button [disabled]="finished" mat-button color="warn" (click)="onClick()" style="width: 100%;margin: 0 auto;">  
+        <mat-icon *ngIf="!finished" style="width: fit-content;">file_upload</mat-icon>  
+        <span *ngIf="!finished" style="width: fit-content;"></span>
+        <span *ngIf="finished" style="width: fit-content;color: #3f51b5;">{{response.originalname}}</span>
+      </button>  
+      <div *ngIf="selected">
+      <app-loader [selected]="selected"></app-loader>
+    </div>
+    </mat-card-actions>  
+  </mat-card>
+  <input type="file" #fileUpload id="fileUpload" enctype="multipart/form-data" name="fileUpload" multiple="multiple" accept="image/*" style="display:none;" />
+  </div>
+  
+  
+  <section *ngIf="finished">
+    <!-- <form #f="ngForm" (ngSubmit)="createRecognition(f.value)" fxLayout="column wrap" -->
+        <!-- fxLayoutAlign="center center" fxLayoutGap="10px"> -->
+    <mat-card >  
+      <mat-card-content>
+        <div>{{res}}</div>
+        <div *ngIf="selected && reckoned">
+          {{language}}
+        </div>
+      </mat-card-content>
+  
+  
+      <mat-card-actions>
+        <mat-form-field *ngIf="!isLoading">
+        <!-- <mat-label>Изберете език</mat-label> -->
+        
+        <mat-select *ngIf="!isLoading" placeholder="Език?" (selectionChange)="onChange($event)"> 
+          <div *ngIf="!isLoading">
+        <!-- </mat-select> #lan name="language" [(ngModel)]="language"> -->
+            <mat-option *ngFor="let lg of langs" [value]="lg.value" style="color: #3f51b5;">
+              {{lg.show}}
+            </mat-option>
+          </div>
+        </mat-select>
+        </mat-form-field>
+      </mat-card-actions>
+          
+    </mat-card>
+  <!-- </form> -->
+  </section>
+  
+  </div>
+  

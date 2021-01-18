@@ -1,0 +1,46 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+      <mat-card-title>Login</mat-card-title>
+      <form #f="ngForm" (ngSubmit)='submitFormHandler(f.value)' autocomplete="on" novalidate fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <mat-card-content fxLayout="column wrap">
+
+          <mat-form-field >
+            <input fxLayout="row wrap" matInput #userEmail="ngModel" ngModel required [class.input-error]="userEmail.touched && !!userEmail.errors" type="email"
+            placeholder="some@gmail.com" name="email" id="email" appEmailValidator>
+            <mat-hint align="end" fxLayout="row wrap">Please enter Your email</mat-hint>
+            <!-- <input #userEmail="ngModel" ngModel required [class.input-error]="userEmail.touched && !!userEmail.errors" type="text"
+              placeholder="john.doe@gmail.com" name="email" id="email" pattern="^[A-z\.-d]{6,}@gmail.(com|bg)$"> -->
+          <mat-error *ngIf="userEmail.touched && userEmail.errors?.required">
+              Email is required!
+          </mat-error>
+          <mat-error *ngIf="userEmail.touched && userEmail.errors?.emailValidator">
+              Email is not valid!</mat-error>
+          </mat-form-field>
+
+          <mat-form-field fxLayout="column wrap">
+            <input fxLayout="row wrap" matInput #userPassword="ngModel" ngModel required minlength="4" type="password" 
+              name="password" id="password" [class.input-error]="userPassword.touched && !!userPassword.errors" placeholder="******">
+              <mat-hint fxLayout="row wrap" align="end">Please enter Your password</mat-hint>
+              <mat-error *ngIf="userPassword.touched && userPassword.errors?.required" class="error">
+              Password is required!
+            </mat-error>
+            <mat-error *ngIf="userPassword.touched && userPassword.errors?.minlength" class="error">
+              Password must be at least 4 characters!</mat-error>
+          </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-actions align="center">
+          <button mat-raised-button color="primary" [disabled]="isLoading || f.invalid" ngTouch='submitFormHandler(f.value)'>Login</button>
+          <!-- <app-loader [isLoading]="isLoading"></app-loader> -->
+          <!-- <app-loader></app-loader> -->
+          <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+          <p class="text-center">
+              Have an account?
+              <a routerLink="/user/register">Register</a>
+          </p>
+        </mat-card-actions>
+  </form>
+</mat-card>
+</section>
+
+

@@ -1,0 +1,27 @@
+<mat-nav-list *ngIf="(isReady$ | async)"> 
+  <a mat-list-item routerLink="/home" (click)="onSidenavClose()">
+      <mat-icon>home</mat-icon> <span class="nav-caption">Home</span>
+  </a>
+  <!-- <a *ngIf="(isLogged$ | async)" mat-list-item routerLink="/user/profile" (click)="onSidenavClose()">
+    <mat-icon>home</mat-icon> <span class="nav-caption">{{(currentUser$ | async)?.username}}'s profile</span>
+  </a> -->
+  <a *ngIf="!(isLogged$ | async)" mat-list-item routerLink="/user/login" (click)="onSidenavClose()">
+    <mat-icon>login</mat-icon> <span class="nav-caption">Login</span>
+  </a>
+  <a *ngIf="!(isLogged$ | async)" mat-list-item routerLink="/user/register" (click)="onSidenavClose()">
+    <mat-icon>assignment_ind</mat-icon> <span class="nav-caption">Register</span>
+  </a>
+  
+  <a *ngIf="(isLogged$ | async)" mat-list-item routerLink="/images/all/{{(currentUser$ | async)?._id}}" (click)="onSidenavClose()">
+    <mat-icon>image</mat-icon> <span class="nav-caption">Images</span>
+  </a>
+  <a *ngIf="(isLogged$ | async)" mat-list-item routerLink="/images/upload" (click)="onSidenavClose()">
+    <mat-icon>open_in_new</mat-icon> <span class="nav-caption">Recognize text</span>
+  </a>
+  <a *ngIf="(isLogged$ | async)" mat-list-item routerLink="/user/profile" (click)="onSidenavClose()">
+    <mat-icon>perm_identity</mat-icon> <span class="nav-caption">{{(currentUser$ | async)?.username}}</span>
+  </a>
+  <a *ngIf="(isLogged$ | async)" mat-list-item routerLink="/user/logout" (click)="onSidenavClose()">
+    <mat-icon>logout</mat-icon> <span class="nav-caption">Logout</span>
+  </a>
+</mat-nav-list>

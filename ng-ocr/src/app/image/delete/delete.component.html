@@ -1,0 +1,40 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="1000px" fxFlex.xs="100%">
+    <mat-card-title>Details for the recognized text</mat-card-title>
+      
+      <mat-card-content>
+        <div fxLayout="column wrap" fxLayoutGap="40px">
+            <!-- <img fxFlex src="{{image.url}}" /> -->
+        <img fxFlex [src]="image.url" />
+            
+          <div fxLayout="column wrap" fxFlex>
+            <div fxFlex><strong>Original File Name</strong></div>
+            <div fxFlex>{{image.originalname}}</div>
+          </div>
+
+          <div fxLayout="column wrap" fxFlex>
+            <div fxFlex><strong>Language</strong></div>
+            <div fxFlex>{{image.language}}</div>
+          </div>
+
+          <div fxLayout="column wrap" fxFlex>
+            <div fxFlex><strong>Recognized text</strong></div>
+            <div fxFlex>{{image.recognizedText}}</div>
+          </div>
+    
+          <div fxLayout="column wrap" fxFlex >
+            <div fxFlex><strong>Date Created</strong></div>
+            <div fxFlex>{{image.created_at}}</div>
+          </div>
+          <div fxLayout="column wrap" fxFlex >
+            <div fxFlex><strong>Last Updated</strong></div>
+            <div fxFlex>{{image.updatedAt}}</div>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button type="submit" mat-raised-button color="warn" (click)="deleteImage()">Delete</button>
+        <button type="button" mat-raised-button color="info" (click)="onCancel()">Cancel</button>
+      </mat-card-actions>
+    </mat-card>
+  </section>

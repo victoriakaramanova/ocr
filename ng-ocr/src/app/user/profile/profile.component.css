@@ -1,0 +1,7 @@
+div>h3, div>ng-container{
+  margin: 0 auto;
+}
+
+mat-card{
+  width: fit-content;
+}

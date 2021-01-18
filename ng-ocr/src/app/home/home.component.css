@@ -1,0 +1,48 @@
+section > div {
+  display: flex;
+  text-align: start;
+  /* line-height: 30px; */
+}
+
+.message {
+  line-height: 40px;
+}
+
+section div p{
+  color: #3f51b5;
+  font-size: 30px;
+  text-shadow: 2px 3px 5px grey;
+  margin: 30px 20px;
+}
+
+section div + p{
+  color: #3f51b5;
+  font-weight: bold;
+  font-size: 20px;
+  
+  /* padding-bottom: 20px; */
+}
+mat-tab-group {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+mat-tab-group p {
+  padding-top: 20px;
+}
+
+mat-icon {
+  align-self: center;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+h1{
+  visibility: hidden;
+}
+
+.wrapper {
+  margin-bottom: 50px;
+}
+
