@@ -41,7 +41,7 @@ yarn-error.log
 testem.log
 /typings
 *.trainneddata
-*environment*
+environments/
 
 
 # System Files
