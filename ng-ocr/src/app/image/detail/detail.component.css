@@ -24,8 +24,8 @@ mat-card-content{
 }
 
 img {
-  max-width: 900px;
+  width: 95vh;
   height: auto;
   /* max-height: 50vh; */
-  width: fit-content;
+  /* width: fit-content; */
 }

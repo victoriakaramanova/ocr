@@ -46,3 +46,18 @@ h1{
   margin-bottom: 50px;
 }
 
+@media (max-width: 360px) {
+  .wrapper{
+    display: block !important;
+  }
+  section{
+    display: block;
+  }
+}
+
+@media (min-width:360px) {
+  .wrapper{
+  display: flex;
+};
+}
+

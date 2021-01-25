@@ -1,5 +1,5 @@
 <section fxLayout="row wrap" fxLayoutAlign="center center">
-  <mat-card fxFlex="1000px" fxFlex.xs="100%">
+  <mat-card fxFlex>
     <mat-card-title>Details for the recognized text</mat-card-title>
       
       <mat-card-content>
@@ -14,7 +14,7 @@
 
           <div fxLayout="column wrap" fxFlex>
             <div fxFlex><strong>Language</strong></div>
-            <div fxFlex>{{image.language}}</div>
+            <div fxFlex>{{image.languageText}}</div>
           </div>
 
           <div fxLayout="column wrap" fxFlex>
@@ -33,7 +33,7 @@
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button type="submit" mat-raised-button color="warn" (click)="deleteImage()">Delete</button>
+        <button type="submit" mat-raised-button color="warn" (click)="deleteImage(image._id, image.public_id)">Delete</button>
         <button type="button" mat-raised-button color="info" (click)="onCancel()">Cancel</button>
       </mat-card-actions>
     </mat-card>

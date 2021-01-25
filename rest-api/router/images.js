@@ -18,6 +18,6 @@ router.get('/reckon',auth(), imageController.recognizeImage);
 
 router.get('/detail/:imageId', auth(), imageController.getImage);
 router.put('/detail', auth(), imageController.editImage);
-router.delete('/delete/:imageId', auth(), imageController.deleteImage);
+router.delete('/delete', auth(), imageController.deleteImage);///:imageId/:public_id
 
 module.exports = router

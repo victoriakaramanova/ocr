@@ -75,9 +75,10 @@ export class UploadService {
     );
   }
 
-  delete(imageId: string): Observable<any> {
+  delete(imageId: string, public_id: string): Observable<any> {
+    let params = new HttpParams().set('imageId', imageId).set('public_id', public_id);
     //return this.httpClient.delete(`${apiUrl}/images/delete/${imageId}`, {withCredentials: true}).pipe(
-    return this.httpClient.delete(`/images/delete/${imageId}`).pipe(
+    return this.httpClient.delete(`/images/delete`, {params}).pipe(///${imageId}/${public_id}`).pipe(
       tap((image: IImage) => this.currentImage = image)
     );
   }

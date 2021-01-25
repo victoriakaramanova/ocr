@@ -19,7 +19,10 @@ const imageSchema = new mongoose.Schema({
   language: {
     type: String
   },
-  //public_id: String,
+  public_id: {
+    type: String,
+    required: true
+  },
   originalname:{
     type: String,
     required: true

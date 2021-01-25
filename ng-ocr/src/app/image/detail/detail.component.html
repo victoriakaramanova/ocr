@@ -3,13 +3,13 @@
   <mat-card-title>Details for the recognized text</mat-card-title>
 
   <ng-template #defaultMode>
-  <mat-card fxFlex="500px" fxFlex.xs="100%">
+  <mat-card fxFlex>
       
       <mat-card-content>
         <div fxLayout="column wrap">
           <!-- fxLayoutGap="40px" -->
             <!-- <img fxFlex src="{{image.url}}" /> -->
-        <img fxFlex [src]="currentImage.url" />
+        <img [src]="currentImage.url" />
             
         <div fxLayout="column wrap" fxFlex>
           <div fxFlex><strong>Original File Name</strong></div>
@@ -51,11 +51,11 @@
 
   <ng-template #editMode>
     <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
-<mat-card fxFlex="1000px" fxFlex.xs="100%">
+<mat-card fxFlex>
       <mat-card-content>
-        <div fxLayout="column wrap" fxLayoutGap="40px">
+        <div fxLayout="column wrap">
           <!-- <div fxLayout="column wrap" fxFlex> -->
-            <img fxFlex [src]="currentImage.url" />
+            <img [src]="currentImage.url" />
           <!-- </div> -->
     
           <div fxLayout="column wrap" fxFlex>

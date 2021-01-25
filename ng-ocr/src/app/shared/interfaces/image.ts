@@ -6,6 +6,7 @@ export interface IImage<T=string> {
   _id: string,
   originalname: string;
   url: string;
+  public_id: string;
   // image: File,//{type: JSON},
   userId: IUser;
   language: string;

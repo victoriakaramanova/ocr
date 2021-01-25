@@ -3,12 +3,13 @@ const { imageModel } = require('../models');
 const request = require('request');
 const fs = require('fs');
 const { Model } = require('mongoose');
-const cloudinary = require('cloudinary');
+const cloudinary = require('cloudinary').v2;
 const { create } = require('express-handlebars');
 const Tesseract = require('tesseract.js');
 const userModel = require('../models/userModel');
 const { text } = require('body-parser');
 const { isContext } = require('vm');
+const { callbackify } = require('util');
 
 function getUserImages(req, res, next) {
   //const userId=req.params.id;
@@ -74,14 +75,19 @@ function addImgToUser(userId, image) {
 
 function uploadImage (req, res, next) {
   //const data = {image: req.body.picture};
-  //console.log(req); 
+  // console.log(req); 
+  // console.log(req.file.filename);
+  // console.log(req.file.filename.slice(4))
   const url=req.file.path;
-    const originalname=req.file.originalname; 
+  const public_id = req.file.filename;
+  //console.log('req.file.filename', req.file.filename)
+    
+  const originalname=req.file.originalname; 
     //const language = req.file.language;
     const { _id: userId } = req.user;
   
   //cloudinary.uploader.upload(data, function(result) {
-    imageModel.create({ url,originalname, userId, language:'', recognizedText: ''})
+    imageModel.create({ url,originalname, userId, language:'', recognizedText: '', public_id})
     .then(createdImage => {
       addImgToUser(userId, createdImage)
       //userModel.findOneAndUpdate({_id: userId}, {$push: {images: createdImage._id}}),
@@ -109,6 +115,20 @@ function getImage(req, res, next) {
 function editImage(req, res, next) {
   const { _id: imageId, recognizedText } = req.body;
   const { _id: userId } = req.user;
+    //const pub_id = 'public_id'
+  // const pub_id = 
+    // imageModel
+    //  .findOne({_id:imageId}, pub_id, function(err, data) {
+    //    if (!data) {
+    //      callbackify('No data', null)
+    //    } else {
+    //      callbackify(err, data)
+    //    }
+    //  })
+    
+    //.catch(next)
+  //console.log(pub_id)
+
 // console.log(req.body,'!!!!REQUEST BODY!!!!!!');
 // console.log(req.user,'!!!!REQUEST USER!!!!!!');
 // console.log(imageId,'!!!!IMAGE ID!!!!!!');
@@ -118,6 +138,7 @@ function editImage(req, res, next) {
  imageModel.findOneAndUpdate({ _id: imageId, userId }, {recognizedText: recognizedText }, { new: true })
       .then(updatedImage => {
           if (updatedImage) {
+            console.log(updatedImage.public_id)
               res.status(200).json(updatedImage);
           }
           else {
@@ -128,12 +149,18 @@ function editImage(req, res, next) {
 };
 
 function deleteImage(req, res, next) {
-  const { imageId } = req.params;
+  const { imageId, public_id } = req.query;
   const { _id: userId } = req.user;
+//const public_id = imageId.public_id
+//console.log(req)
 
   Promise.all([
       imageModel.findOneAndDelete({ _id: imageId, userId }),
       userModel.findOneAndUpdate({ _id: userId }, { $pull: { images: imageId } }),
+      //console.log('imageId.public_id: ', public_id),
+      cloudinary.uploader.destroy(public_id, function(err,result) {
+        console.log(result,err);
+      })
   ])
       .then(([deletedOne, _, __]) => {
           if (deletedOne) {

@@ -26,22 +26,24 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     //this.userService.getCurrentUserProfile().subscribe();
+    this.authService.authenticate();
   }
 
   toggleEditMode(): void {
     this.inEditMode = !this.inEditMode;
   }
 
-  // submitHandler(data: any): void {
-  //   this.userService.updateProfile(data).subscribe({
-  //     next: () => {
-  //       this.inEditMode = false;
-  //     },
-  //     error: (err) => {
-  //       console.error(err);
-  //     }
-  //   })
-  // }
+  submitHandler(data: any): void {
+    this.userService.updateProfile(data).subscribe({
+      next: () => {
+        this.inEditMode = false;
+        //this.authService.authenticate()
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
 
   public onCancel = () => {
     this.location.back();

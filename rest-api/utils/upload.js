@@ -11,7 +11,8 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: 'ocr'
+    folder: 'ocr',
+    use_filename: true
   },
   //folder: 'ocr',
   allowedFormats: ['jpg', 'png', 'jpeg', 'pdf'],

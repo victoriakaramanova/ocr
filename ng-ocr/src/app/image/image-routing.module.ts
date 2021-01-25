@@ -35,7 +35,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'delete/:id',
+        path: 'delete/:id1/:id2',
         component: DeleteComponent,
         data: {
           title: 'Delete',

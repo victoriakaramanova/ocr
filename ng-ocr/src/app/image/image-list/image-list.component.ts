@@ -75,7 +75,8 @@ export class ImageListComponent implements OnInit, AfterViewInit {
   }
 
   public redirectToDelete = (imageId: string) => {
-    const deleteUrl: string = `/images/delete/${imageId}`; 
+    const public_id = this.dataSource.data.find(x=>x.public_id)
+    const deleteUrl: string = `/images/delete/${imageId}/${public_id}`; 
     this.router.navigate([deleteUrl]); 
   }
 
